@@ -1,0 +1,20 @@
+html, body, #map {
+  position:absolute;
+  top:0;
+  bottom:0;
+  height: 100%;
+  width: 100%;
+ }
+
+.marker {
+background-image: url('icons8-round-50.png');
+background-size: cover;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+cursor: pointer;
+}
+
+.line {
+  color: #ffffff;
+}
