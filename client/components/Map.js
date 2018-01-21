@@ -1,46 +1,39 @@
-const mapboxgl = require("mapbox-gl")
+const React = require('react')
+
+class Map extends React.Component {
+  render(){
+
+    // const mapboxgl = require("mapbox-gl")
+
+    // mapboxgl.accessToken = 'pk.eyJ1IjoibHlzc2FzdGlsbGVyIiwiYSI6ImNqY2t4OTYwYTAwdWwzM21kN3U3cDY2cHgifQ.ZXcQYrdAHv6rvtmTvCxBPg';
+    // var map = new mapboxgl.Map({
+    //     container: 'map', // container id
+    //     style: 'mapbox://styles/mapbox/dark-v9', // stylesheet location
+    //     center: [-73.9692, 40.7128], // starting position [lng, lat]
+    //     zoom: 12 // starting zoom
+    // });
 
 
+    // subwayStations.features.forEach(function(marker) {
 
+    //   // create a HTML element for each feature
+    //   var el = document.createElement('div');
+    //   el.className = 'marker';
 
+    //   // make a marker for each feature and add to the map
+    //   new mapboxgl.Marker(el)
+    //   .setLngLat(marker.geometry.coordinates)
+    //   .addTo(map);
+    // });
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibHlzc2FzdGlsbGVyIiwiYSI6ImNqY2t4OTYwYTAwdWwzM21kN3U3cDY2cHgifQ.ZXcQYrdAHv6rvtmTvCxBPg';
-var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/mapbox/dark-v9', // stylesheet location
-    center: [-73.9692, 40.7128], // starting position [lng, lat]
-    zoom: 12 // starting zoom
-});
+  return (
 
+    <div> is this happening? </div>
+    )
+  }
+}
 
-subwayStations.features.forEach(function(marker) {
-
-  // create a HTML element for each feature
-  var el = document.createElement('div');
-  el.className = 'marker';
-
-  // make a marker for each feature and add to the map
-  new mapboxgl.Marker(el)
-  .setLngLat(marker.geometry.coordinates)
-  .addTo(map);
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = Map
 
 
 var subwayStations = {
