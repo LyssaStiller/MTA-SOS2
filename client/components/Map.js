@@ -1,39 +1,48 @@
 const React = require('react')
+import GetLocation from './GetUserLocation'
+import Test from './Test'
 
-class Map extends React.Component {
+export default class Map extends React.Component {
+
   render(){
 
-    // const mapboxgl = require("mapbox-gl")
+    const mapboxgl = require("mapbox-gl")
 
-    // mapboxgl.accessToken = 'pk.eyJ1IjoibHlzc2FzdGlsbGVyIiwiYSI6ImNqY2t4OTYwYTAwdWwzM21kN3U3cDY2cHgifQ.ZXcQYrdAHv6rvtmTvCxBPg';
-    // var map = new mapboxgl.Map({
-    //     container: 'map', // container id
-    //     style: 'mapbox://styles/mapbox/dark-v9', // stylesheet location
-    //     center: [-73.9692, 40.7128], // starting position [lng, lat]
-    //     zoom: 12 // starting zoom
-    // });
+    mapboxgl.accessToken = 'pk.eyJ1IjoibHlzc2FzdGlsbGVyIiwiYSI6ImNqY2t4OTYwYTAwdWwzM21kN3U3cDY2cHgifQ.ZXcQYrdAHv6rvtmTvCxBPg';
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/mapbox/dark-v9', // stylesheet location
+        center: [-73.9692, 40.7128], // starting position [lng, lat]
+        zoom: 12 // starting zoom
+    });
 
 
-    // subwayStations.features.forEach(function(marker) {
+    subwayStations.features.forEach(function(marker) {
 
-    //   // create a HTML element for each feature
-    //   var el = document.createElement('div');
-    //   el.className = 'marker';
+      // create a HTML element for each feature
+      var el = document.createElement('div');
+      el.className = 'marker';
 
-    //   // make a marker for each feature and add to the map
-    //   new mapboxgl.Marker(el)
-    //   .setLngLat(marker.geometry.coordinates)
-    //   .addTo(map);
-    // });
+      // make a marker for each feature and add to the map
+      new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+      .addTo(map);
+    });
+
+    //add ability to track user location
+    map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+          enableHighAccuracy: true
+      },
+      trackUserLocation: true
+  }));
 
   return (
 
-    <div> is this happening? </div>
+    <GetLocation map={map}/>
     )
   }
 }
-
-module.exports = Map
 
 
 var subwayStations = {
