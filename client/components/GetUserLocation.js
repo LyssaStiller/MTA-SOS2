@@ -1,5 +1,6 @@
 import React from 'react'
 import {geolocated} from 'react-geolocated'
+import Mapbox from 'mapbox-gl'
 
 class GetLocation extends React.Component {
   constructor(props){
@@ -26,7 +27,8 @@ class GetLocation extends React.Component {
   }
   render (){
     if (navigator.geolocation) {
-      console.log('Geolocation is supported!');
+      console.log(navigator.geolocation, 'Geolocation is supported!')
+
     }
     else {
       console.log('Geolocation is not supported for this Browser/OS.');
@@ -41,6 +43,11 @@ class GetLocation extends React.Component {
     .setLngLat([this.state.lng, this.state.lat])
     .addTo(this.props.map);
 
+    if(this.state.lng){
+      this.props.map.flyTo({
+        center: [this.state.lng, this.state.lat]
+      });
+    }
 
       return (
         <div/>
@@ -64,4 +71,21 @@ export default geolocated({
 //     let lon = startPos.coords.longitude;
 //   };
 //   navigator.geolocation.getCurrentPosition(geoSuccess);
+
+
+
+  // function getUserData (){
+  //  if (navigator.geolocation) {
+  //         console.log(navigator.geolocation, 'Geolocation is supported!');
+
+  //         navigator.geolocation.getCurrentPosition(function(position) {
+  //            console.log([position.coords.longitude, position.coords.latitude]);
+  //         });
+  //       }
+  //       else {
+  //         console.log('Geolocation is not supported for this Browser/OS.');
+  //       }
+  // }
+
+  // module.exports = getUserData
 
